@@ -2,19 +2,21 @@
 //  MotivateApp.swift
 //  Motivate
 //
-//  Created by Furkan Deniz Albaylar on 27.04.2023.
+//  Created by Furkan Deniz Albaylar on 28.04.2023.
 //
+
+import Foundation
 
 import SwiftUI
 
 @main
 struct MotivateApp: App {
-    let persistenceController = PersistenceController.shared
+    @StateObject private var modelData = ModelData()
 
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-        }
-    }
-}
+       var body: some Scene {
+           WindowGroup {
+               ContentView()
+                   .environmentObject(modelData)
+           }
+       }
+   }
